@@ -47,7 +47,9 @@ sudo service mongod start
 ```
 sudo service mongod status
 ```
-![alt text](<mongodb active.PNG>)
+![alt text](<Meanstack/Images/mongodb active.PNG>)
+
+
 ### INSTALL MONGODB AND START
 ```
 sudo apt install -y mongodb
@@ -57,7 +59,8 @@ sudo service mongodb start
 ```
 sudo systemctl status mongodb
 ```
-![alt text](mongoose.PNG)
+![alt text](Meanstack/Images/mongoose.PNG)
+
 ### Install npm – Node package manager.
 ```
 sudo apt install -y npm
@@ -76,7 +79,8 @@ cd Books
 ```
 npm init
 ```
-![alt text](<npm init.PNG>)
+![alt text](<Meanstack/Images/npm init.PNG>)
+
 -  
 Add a file to it named server.js
 ```
@@ -175,7 +179,7 @@ var bookSchema = mongoose.Schema( {
 var Book = mongoose.model('Book', bookSchema);
 module.exports = mongoose.model('Book', bookSchema);
 ```
-###Step 4 – Access the routes with AngularJS
+### Step 4 – Access the routes with AngularJS
 -  Change the directory back to ‘Books’
 ```
 cd ../..
@@ -302,7 +306,8 @@ curl -s http://localhost:3300
 ```
 ### EDIT INBOUND RULES
 - Open port 3300.
-![alt text](project4.PNG)
+![alt text](Meanstack/Images/project4.PNG)
+
 
 
  
