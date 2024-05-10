@@ -1,11 +1,11 @@
 ## MEAN STACK DEPLOYMENT ON UBUNTU
-- ### MONGODB
-- ### EXPRESS
-- ### ANGULAR
-- ### NODE.JS
+- MONGODB
+- EXPRESS
+- ANGULAR
+- NODE.JS
 #### STEP 1
-- Create an ubuntu 22.04 server on Ec2 micro family,remember to use a keypair.
-### INSTALL NODE.JS
+Create an ubuntu 22.04 server on Ec2 micro family,remember to use a keypair.
+#### INSTALL NODE.JS
 ```
 sudo apt update
 sudo apt upgrade
@@ -13,13 +13,13 @@ sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 nvm install 20
 ```
-- Always make sure to check the version of your node.js
+Always make sure to check the version of your node.js
 ```
 node -v
 npm -v
 ```
 - The version should be the latest.
-### INSTALL MONGODB
+#### INSTALL MONGODB
 ```
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
 wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
@@ -31,14 +31,14 @@ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb
 - Update and Upgrade the machine
 ```
 apt-get update
-apt-get upgrade -y 
-```
+apt-get upgrade -y
+``` 
 - Now lets install the mongodb app
 ```
 sudo apt install mongodb-org
 ```
 - Verify to see mongodb has been installed
-- Then enable MongoDB to start at system startup and initiate its start as well.
+Then enable MongoDB to start at system startup and initiate its start as well.
 ```
 sudo systemctl enable mongod
 sudo service mongod start
@@ -47,10 +47,9 @@ sudo service mongod start
 ```
 sudo service mongod status
 ```
-![alt text](<Meanstack/Images/mongodb active.PNG>)
+![alt text](<Images/mongodb active.PNG>)
 
-
-### INSTALL MONGODB AND START
+#### INSTALL MONGODB AND START
 ```
 sudo apt install -y mongodb
 sudo service mongodb start
@@ -59,30 +58,28 @@ sudo service mongodb start
 ```
 sudo systemctl status mongodb
 ```
-![alt text](Meanstack/Images/mongoose.PNG)
+![alt text](Images/mongoose-1.PNG)
 
-### Install npm – Node package manager.
+- Install npm – Node package manager.
 ```
 sudo apt install -y npm
 ```
-### Install body-parser package
+- Install body-parser package
 We need ‘body-parser’ package to help us process JSON files passed in requests to the server.
 ```
 sudo npm install body-parser
-```
-### Create a folder named Books
-```
+Create a folder named Books
 mkdir Books 
 cd Books
 ```
-###In the Books directory, Initialize npm project.
+### In the Books directory, Initialize npm project.
 ```
 npm init
 ```
-![alt text](<Meanstack/Images/npm init.PNG>)
+![alt text](Images/version.PNG)
 
--  
-Add a file to it named server.js
+
+- Add a file to it named server.js
 ```
 vi server.js
 ```
@@ -99,12 +96,9 @@ app.listen(app.get('port'), function() {
     console.log('Server up: http://localhost:' + app.get('port'));
 });
 ```
-### INSTALL EXPRESS AND SET UP ROUTES TO THE SERVER
-Step 3: Install Express and set up routes to the server
-- We will use Mongoose to establish a schema for the database to store data of our book register.
-```
-sudo npm install express mongoose
-```
+#### INSTALL EXPRESS AND SET UP ROUTES TO THE SERVER
+- Step 3: Install Express and set up routes to the server
+
 - In ‘Books’ folder, create a folder named apps.
 ```
 mkdir apps
@@ -154,7 +148,7 @@ module.exports = function(app) {
   });
 };
 ```
-- In the ‘apps’ folder, create a folder named models.
+In the ‘apps’ folder, create a folder named models.
 ```
 mkdir models 
 cd models
@@ -163,7 +157,7 @@ cd models
 ```
 vi book.js
 ```
-Copy and paste the code below into ‘book.js’
+- Copy and paste the code below into ‘book.js’
 ```
 var mongoose = require('mongoose');
 var dbHost = 'mongodb://localhost:27017/test';
@@ -179,21 +173,20 @@ var bookSchema = mongoose.Schema( {
 var Book = mongoose.model('Book', bookSchema);
 module.exports = mongoose.model('Book', bookSchema);
 ```
-### Step 4 – Access the routes with AngularJS
--  Change the directory back to ‘Books’
+#### Step 4 – Access the routes with AngularJS
+Change the directory back to ‘Books’
 ```
 cd ../..
 ```
-Create a folder named public
+- Create a folder named public
 ```
 mkdir public 
 cd public
 ```
-Add a file named script.js
+- Add a file named script.js
 ```
 vi script.js
 ```
- 
 - Copy and paste the Code below (controller configuration defined) into the script.js file.
 ```
 var app = angular.module('myApp', []);
@@ -238,7 +231,6 @@ app.controller('myCtrl', function($scope, $http) {
 ```
 vi index.html
 ```
- 
 - Copy and paste the code below into index.html file.
 ```
 <!doctype html>
@@ -300,23 +292,9 @@ Start the server by running this command:
 ```
 node server.js
 ```
-- The server is now up and running, we can connect it via port 3300. You can launch a separate Putty or SSH console to test what the curl command returns locally.
+The server is now up and running, we can connect it via port 3300. You can launch a separate Putty or SSH console to test what the curl command returns locally.
 ```
 curl -s http://localhost:3300
 ```
-### EDIT INBOUND RULES
-- Open port 3300.
-![alt text](Meanstack/Images/project4.PNG)
-
-
-
- 
-
-
-
-
-
-
-
-
- 
+#### EDIT INBOUND RULES
+![alt text](Images/project4.PNG)
