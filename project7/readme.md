@@ -15,7 +15,7 @@ On the diagram below you can see a common pattern where several stateless Web Se
 It is important to know what storage solution is suitable for what use cases, for this – you need to answer the following questions: what data will be stored, in what format, how this data will be accessed, by whom, from where, how frequently, etc. Based on this you will be able to choose the right storage system for your solution.
  
 
-STEP 1 – PREPARE NFS SERVER
+STEP 1 – PREPARE NFS SERVER,Database ubuntu,and three web servers with the same security group.While creating the instances allow for http and https.
 Step 1 – Prepare NFS Server
 Spin up a new EC2 instance with RHEL Linux 8 Operating System.
 Based on your LVM experience from Project 6, Configure LVM on the Server.
@@ -36,7 +36,7 @@ sudo fdisk /dev/nvme1n1
 sudo fdisk /dev/nvme2n1
 sudo fdisk /dev/nvme3n1
 ```
-- Type n, to create new partition, enter 1 to create 1 partition, p to see the partition details and w to write the created partition. Select yes to finish.
+- Type n, to create new partition, enter 1 to create 1 partition, p to see the partition details 2048 and w to write the created partition. Select yes to finish.
 ```
 lsblk
 
@@ -141,7 +141,7 @@ sudo vi /etc/exports
 Esc + :wq!
 
 sudo exportfs -arv
-etcedit
+
 
 exportfs
 ```
@@ -177,9 +177,14 @@ GRANT ALL PRIVILEGES ON *.* TO 'webaccess'@'CIDR'WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 SHOW DATABASES;
 ```
+```
+sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf
+```
+- bind address: 0.0.0.0
+- mysql bind address:0.0.0.0
 ### WEBSERVERS
 
-- Spin up a new REHL 8 ec2 instance in the same subnet as the nfs server
+- Spin up 3 new REHL 8 ec2 instance in the same subnet as the nfs server
 
 Install NFS client
 ```
@@ -200,7 +205,7 @@ sudo vi /etc/fstab
 ```
 - Add the following to the file setting
 ```
-<NFS-Server-Private-IP-Address>:/mnt/apps /var/www nfs defaults 0 0``
+<NFS-Server-Private-IP-Address>:/mnt/apps /var/www nfs defaults 0 0
 ```
 - Install Remi’s repository, Apache and PHP
 ```
@@ -236,39 +241,80 @@ ls
 cd /mnt/apps
 ls
 ```
+- In your webserver
+```
+cd ~
+sudo mkdir -p /var/log/httpd
+
+sudo mount -t nfs -o rw,nosuid <NFS-Server-Private-IP-Address>:/mnt/logs /var/log/httpd
+
+sudo vi /etc/fstab
+
+<NFS-Server-Private-IP-Address>:/mnt/logs / var/log/httpd nfs defaults 0 0
+
+
+```
 - Fork the tooling source code from Darey.io Github Account to your Github account. (Learn how to fork a repo here)
 ```
 cd ~
 sudo yum install git
-git clone 
+git init
+git clone https://github.com/darey-io/tooling.git
 cd tooling/
-sudo cp -r html /var/www/
-cd ~
-cd /var/www
-ls
-cd html/
-ls
+sudo cp -r html/* /var/www/html/
+
 ```
-- Do not forget to open port 80 in the edit inbound rules.
+- Do not forget to open port 80 in the edit inbound rules of the webserver.
+If you encounter 403 Error:
+
+check permissions on /var/www/html folder
+Disable SELinux sudo setenforce 0
+To make this change permanent, open selinux config file and set SELINUX=disabled then restrt httpd.
+```
+sudo vi /etc/sysconfig/selinux
+```
+Update the website’s configuration to connect to the database
+```
+sudo vi /var/www/html/functions.php
+```
+$db = mysqli_connect('database private ip','webaccess','password','tooling')
 ```
 sudo yum install httpd
 ```
-
-![alt text](<Images/httpd installation.PNG>)
- - If you encounter 403 Error – check permissions to your /var/www/html folder and also disable SELinux sudo setenforce 0
-To make this change permanent – open following config file.
+- Install mysql-client 
 ```
- sudo vi /etc/sysconfig/selinux
- ```
-and set SELINUX=disabledthen restrt httpd.
+sudo yum install mysql
+```
+- Apply tooling-db.sql script to your database using this command
+``` 
+mysql -h <databse-private-ip> -u <db-username> -p <db-name> < tooling-db.sql
+```
+
+ 
  ```
  sudo systemctl status httpd
  sudo systemctl start httpd
  ```
- ![alt text](<Images/httpd enabled.PNG>)
+ - Confirm if this worked in the DB-Server
+ - Do not forget to open port 3306 on the database web server.
 
- ![alt text](Images/Login.PNG)
+ ![alt text](Images/mysql.PNG)
 
+ ![alt text](Images/showdatabase.PNG)
 
+ ![alt text](<Images/mysql tooling.PNG>)
+ ```
+sudo systemctl restart mysql
+sudo 
+show databases;
+use tooling;
+show tables;
+select * from users;
+```
+![alt text](<Images/Home page.PNG>)
+
+![alt text](<Images/propitix tooling website.PNG>)
+
+- Congratulations! We have just implemented a web solution for a DevOps team using LAMP stack with remote Database and NFS servers.
 
 
