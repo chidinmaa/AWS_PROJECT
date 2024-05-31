@@ -315,6 +315,6 @@ select * from users;
 
 ![alt text](<Images/propitix tooling website.PNG>)
 
-- Congratulations! We have just implemented a web solution for a DevOps team using LAMP stack with remote Database and NFS servers.Go girl you made it!
+- Congratulations! We have just implemented a web solution for a DevOps team using LAMP stack with remote Database and NFS servers.Go girl you made it!you made it.
 
 
