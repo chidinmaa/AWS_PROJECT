@@ -103,6 +103,6 @@ Now you can update your LB config file with those names instead of IP addresses.
 BalancerMember http://Web1:80 loadfactor=5 timeout=1
 BalancerMember http://Web2:80 loadfactor=5 timeout=1
 You can try to curl your Web Servers from LB locally curl http://Web1 or curl http://Web2 – it shall work.
-### Congratulations! You have just implemented a Load balancing Web Solution for your DevOps team.
+### Congratulations! You have just implemented a Load balancing Web Solution for your DevOps team.Go girl you made it.
 
 
