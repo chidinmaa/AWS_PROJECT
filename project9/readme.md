@@ -49,7 +49,7 @@ sudo systemctl status jenkins
 ```
 - By default Jenkins server uses TCP port 8080 – open it by creating a new Inbound Rule in your Ec2 security group.
 
-![alt text](<jenkins inbound rule.PNG>)
+![alt text](<Images/jenkins inbound rule.PNG>)
 
 - Perform initial Jenkins setup.
 From your browser access http://Jenkins-Server-Public-IP-Address-or-Public-DNSName:8080
@@ -146,13 +146,13 @@ TCP port 22 on NFS server must be open to receive SSH connections.
 
 Save the configuration, open your Jenkins job/project configuration page and add
 another one Post-build Action.
-![alt text](Build.PNG)
+![alt text](Images/Build.PNG)
 
 - Configure it to send all files produced by the build into our previously define remote
 directory. In our case we want to copy all files and directories – so we use **.
 If you want to apply some particular pattern to define which files to send – use this
 syntax.
-![alt text](<ssh build.PNG>)
+![alt text](<Images/ssh build.PNG>)
 
 - Save this configuration and go ahead, and change something in README.MD file in your
 GitHub Tooling repository.
