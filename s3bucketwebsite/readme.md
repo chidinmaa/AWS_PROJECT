@@ -81,6 +81,6 @@ http://chidi.scalagos.s3-website-us-east-1.amazonaws.com
 - You can also upload pictures from your file explorer.
 https://s3.amazonaws.com/chidi.scalagos/cat.JPG
 
-![alt text](<Images/j.peg $ html.JPG>)
+![alt text](<Images/html.JPG>)
 
 

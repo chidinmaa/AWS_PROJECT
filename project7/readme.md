@@ -39,17 +39,17 @@ sudo fdisk /dev/nvme3n1
 - Type n, to create new partition, enter 1 to create 1 partition, p to see the partition details 2048 and w to write the created partition. Select yes to finish.
 ```
 lsblk
-
-Intall lvm2
-
+```
+- Install lvm2
+```
 sudo yum install lvm2
 sudo lvmdiskscan
 ```
 - Create Physical volume by marking 3 of the partitioned disks with pvcreate
 ```
-sudo pvcreate /dev/nvme1n1
-sudo pvcreate /dev/nvme2n1
-sudo pvcreate /dev/nvme3n1
+sudo pvcreate /dev/nvme1n1p1
+sudo pvcreate /dev/nvme2n1p1
+sudo pvcreate /dev/nvme3n1p1
 ```
 - Verify the created physical volumes
 ```
@@ -102,6 +102,9 @@ sudo blkid
 ```
 sudo vi /etc/fstab
 ```
+UUID=logs number /mnt/logs xfs defaults 0 0
+UUID=opt number /mnt/opt xfs defaults 0 0
+UUID= apps number /mnt/apps xfs defaults 0 0
 - Test and reload
 ```
 sudo mount -a
