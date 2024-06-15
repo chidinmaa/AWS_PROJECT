@@ -57,7 +57,7 @@ You will be prompted to provide a default admin password.
 
 Retrieve it from your server:
 ```
-sudo cat /var/lib/jenkins/secrets/
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
 initialAdminPassword
 Then you will be asked which plugings to install – choose suggested plugins.
