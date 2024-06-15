@@ -48,12 +48,12 @@ sudo systemctl status jenkins
 ```
 - By default Jenkins server uses TCP port 8080 – open it by creating a new Inbound Rule in your Ec2 security group.
 
-![alt text](<Images/jenkins inbound rule.PNG>)
+![alt text](Images/Inboundrules.PNG)
 
 - Perform initial Jenkins setup.
 From your browser access http://Jenkins-Server-Public-IP-Address-or-Public-DNSName:8080
 You will be prompted to provide a default admin password.
-![alt text](<unlock jenkins.PNG>)
+![alt text](<Images/unlock jenkins.PNG>)
 
 Retrieve it from your server:
 ```
@@ -61,12 +61,12 @@ sudo cat /var/lib/jenkins/secrets/
 ```
 initialAdminPassword
 Then you will be asked which plugings to install – choose suggested plugins.
-![alt text](<customized jenkins.PNG>)
+![alt text](<Images/customized jenkins.PNG>)
 Once plugin installation is done – create an admin user and you will get your Jenkins
 server address.
 The installation is completed!
 - Use admin,admin,admin@admin.com
-![alt text](<jenkins is ready.PNG>)
+![alt text](<Images/jenkins is ready.PNG>)
 
 Step 2 – Configure Jenkins to retrieve source codes from GitHub
 using Webhooks
