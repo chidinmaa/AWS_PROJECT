@@ -178,3 +178,4 @@ expected.
 Congratulations!
 You have just implemented your first Continous Integration solution using Jenkins CI.
 Watch out for advanced CI configurations in upcoming projects.
+Thank you SCALAGOS
