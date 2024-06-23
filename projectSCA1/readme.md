@@ -21,7 +21,7 @@ aws configure
 
 
 ```
-aws s3api create-bucket --bucket chidi.scalagos --region us-eascket chidi.scalagos --region us-east-1
+aws s3api create-bucket --bucket chidi.scalagos --region us-east-1
 ```
 
 ![alt text](Images/bucket.PNG)
