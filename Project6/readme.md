@@ -1,37 +1,21 @@
 ## WEB SOLUTION WITH WORDPRESS
-You are progressing in practicing to implement web solutions using different
-technologies. As a DevOps engineer you will most probably encounter PHP-based
-solutions since, even in 2021, it is the dominant web programming language used by
-more websites than any other programming language.
-In this project you will be tasked to prepare storage infrastructure on two Linux servers
-and implement a basic web solution using WordPress. WordPress is a free and open-
+This is a PHP-based solution.
+This project prepares storage infrastructure on two Linux servers with a basic web solution using WordPress. WordPress is a free and open-
 source content management system written in PHP and paired
 with MySQL or MariaDB as its backend Relational Database Management System
 (RDBMS).
-Project 6 consists of two parts:
+Consisting of two parts:
 1. Configure storage subsystem for Web and Database servers based on Linux OS.
-The focus of this part is to give you practical experience of working with disks,
-partitions and volumes in Linux.
-2. Install WordPress and connect it to a remote MySQL database server. This part
-of the project will solidify your skills of deploying Web and DB tiers of Web
-solution.
-As a DevOps engineer, your deep understanding of core components of web solutions
-and ability to troubleshoot them will play essential role in your further progress and
-development.
-Three-tier Architecture
-Generally, web, or mobile solutions are implemented based on what is called the Three-
-tier Architecture.
+
+2. Install WordPress and connect it to a remote MySQL database server. 
 Three-tier Architecture is a client-server software architecture pattern that comprise of
 3 separate layers.LAUNCH AN EC2 INSTANCE THAT WILL SERVE AS
 “WEB SERVER”.
 Step 1 — Prepare a Web Server
--  Launch an EC2 instance that will serve as &quot;Web Server&quot;. Create 3 volumes in the
+-  Launch an EC2 instance that will serve as Web Server. Create 3 volumes in the
 same AZ as your Web Server EC2, each of 10 GiB.
-Open up the Linux terminal to begin configuration
-- Use lsblk command to inspect what block devices are attached to the server.
-Notice names of your newly created devices. All devices in Linux reside in /dev/
-directory. Inspect it with ls /dev/ and make sure you see all 3 newly created block
-devices there – their names will likely be xvdf, xvdh, xvdg.
+
+
 ```
 sudo gdisk /dev/xvdf
 ```
