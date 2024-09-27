@@ -47,7 +47,7 @@ sudo service mongod start
 ```
 sudo service mongod status
 ```
-![alt text](<Images/mongodb active.PNG>)
+![alt text](<Images/mongodb active.png>)
 
 #### INSTALL MONGODB AND START
 ```
@@ -58,7 +58,7 @@ sudo service mongodb start
 ```
 sudo systemctl status mongodb
 ```
-![alt text](Images/mongoose-1.PNG)
+![alt text](Images/mongoose-1.png)
 
 - Install npm – Node package manager.
 ```
@@ -76,7 +76,7 @@ cd Books
 ```
 npm init
 ```
-![alt text](Images/version.PNG)
+![alt text](Images/version.png)
 
 
 - Add a file to it named server.js
@@ -297,4 +297,4 @@ The server is now up and running, we can connect it via port 3300. You can launc
 curl -s http://localhost:3300
 ```
 #### EDIT INBOUND RULES
-![alt text](Images/project4.PNG)
+![alt text](Images/project4.png)
