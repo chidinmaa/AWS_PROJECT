@@ -47,7 +47,7 @@ sudo service mongod start
 ```
 sudo service mongod status
 ```
-![alt text](<Images/mongodb active.png>)
+![alt text](<Images/mongodb_active.png>)
 
 #### INSTALL MONGODB AND START
 ```
@@ -58,7 +58,7 @@ sudo service mongodb start
 ```
 sudo systemctl status mongodb
 ```
-![alt text](Images/mongoose-1.png)
+![alt text](Images/mongoose.png)
 
 - Install npm – Node package manager.
 ```
